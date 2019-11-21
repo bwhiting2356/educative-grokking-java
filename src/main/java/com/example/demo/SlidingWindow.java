@@ -10,17 +10,6 @@ public class SlidingWindow {
         }
         return sum / numbers.length;
     }
-//    public static double[] findAverages(int k, double[] numbers) {
-//        double[] results = new double[numbers.length - k + 1];
-//        for (int i = 0; i < numbers.length - k + 1; i++) {
-//            double sum = 0;
-//            for (int j = i; j < i + k; j++) {
-//                sum += numbers[j];
-//            }
-//            results[i] = sum / k;
-//        }
-//        return results;
-//    }
 
     public static double[] findAverages(int k, double[] numbers) {
         double[] results = new double[numbers.length - k + 1];
