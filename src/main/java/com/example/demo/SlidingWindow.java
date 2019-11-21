@@ -1,7 +1,5 @@
 package com.example.demo;
 
-import java.util.stream.IntStream;
-
 public class SlidingWindow {
     public static double average(double[] numbers) {
         double sum = 0;
