@@ -116,4 +116,42 @@ public class SlidingWindow {
 
         return !matchFound ? 0 : longestSubStringSize;
     }
+
+    public static int maxFruitCountOf2Types(char[] fruit) {
+        Map<Character, Integer> fruitBaskets = new HashMap<Character, Integer>() {};
+        int windowStart = 0;
+        int windowEnd = 0;
+        int maxFruitCount = Integer.MIN_VALUE;
+        boolean matchFound = false;
+        fruitBaskets.put(fruit[0], 1);
+
+        while (windowStart <= fruit.length - 1) {
+            int currentFruitCount = (windowEnd - windowStart) + 1;
+            if (fruitBaskets.size() <= 2) {
+                maxFruitCount = Math.max(maxFruitCount, currentFruitCount);
+                matchFound = true;
+                windowEnd++;
+
+                if (windowEnd > fruit.length - 1) { break; }
+                char windowEndChar = fruit[windowEnd];
+                if (fruitBaskets.containsKey(windowEndChar)) {
+                    Integer val = fruitBaskets.get(windowEndChar);
+                    fruitBaskets.put(windowEndChar, val + 1);
+                } else {
+                    fruitBaskets.put(windowEndChar, 1);
+                }
+            } else {
+                char windowStartChar = fruit[windowStart];
+                Integer val = fruitBaskets.get(windowStartChar);
+                if (val > 1) {
+                    fruitBaskets.put(windowStartChar, val - 1);
+                } else {
+                    fruitBaskets.remove(windowStartChar);
+                }
+                windowStart++;
+            }
+        }
+
+        return !matchFound ? 0 : maxFruitCount;
+    }
 }

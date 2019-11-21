@@ -76,4 +76,16 @@ class SlidingWindowTest {
         assertEquals(5, result);
     }
 
+
+    @Test
+    void maxFruitCount2Types_t0() {
+        int result = SlidingWindow.maxFruitCountOf2Types(new char[]{ 'A', 'B', 'C', 'A', 'C' });
+        assertEquals(result, 3);
+    }
+
+    @Test
+    void maxFruitCount2Types_t1() {
+        int result = SlidingWindow.maxFruitCountOf2Types(new char[]{ 'A', 'B', 'C', 'B', 'B', 'C' });
+        assertEquals(result, 5);
+    }
 }
