@@ -37,10 +37,10 @@ class SlidingWindowTest {
     }
 
     @Test
-    void findAverages_t1() {
+    void maximumSum() {
+        int[] numbers = new int[] { 2, 1, 5, 1, 3, 2 };
+        int result = SlidingWindow.maximumSum(3, numbers);
+        assertEquals(9, result);
     }
 
-    @Test
-    void findAverages_t2() {
-    }
 }

@@ -27,4 +27,26 @@ public class SlidingWindow {
 
         return results;
     }
+
+    public static int maximumSum(int k, int[] numbers) {
+        int maxSum = Integer.MIN_VALUE;
+        int currentSum = 0;
+
+        for (int i = 0; i < k; i++) {
+            currentSum += numbers[i];
+        }
+
+        maxSum = Math.max(maxSum, currentSum);
+
+        int windowStart = 1;
+
+        for (int windowEnd = k; windowEnd < numbers.length; windowEnd++) {
+            currentSum -= numbers[windowStart - 1];
+            currentSum += numbers[windowEnd];
+            maxSum = Math.max(maxSum, currentSum);
+            windowStart++;
+        }
+
+        return maxSum;
+    }
 }
