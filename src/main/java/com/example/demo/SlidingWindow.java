@@ -154,4 +154,47 @@ public class SlidingWindow {
 
         return !matchFound ? 0 : maxFruitCount;
     }
+
+    public static int noRepeatSubstring(String input) {
+        Map<Character, Integer> distinctChars = new HashMap<Character, Integer>() {};
+        int windowStart = 0;
+        int windowEnd = 0;
+        int longestSubStringSize = Integer.MIN_VALUE;
+        boolean matchFound = false;
+        distinctChars.put(input.charAt(0), 1);
+
+        while (windowStart <= input.length() - 1) {
+            int currentSubStringSize = (windowEnd - windowStart) + 1;
+            boolean anyDuplicates = distinctChars
+                    .values()
+                    .stream()
+                    .anyMatch(val -> val > 1);
+            if (!anyDuplicates) {
+                longestSubStringSize = Math.max(longestSubStringSize, currentSubStringSize);
+                matchFound = true;
+
+                windowEnd++;
+                if (windowEnd > input.length() - 1) { break; }
+                char windowEndChar = input.charAt(windowEnd);
+                if (distinctChars.containsKey(windowEndChar)) {
+                    Integer val = distinctChars.get(windowEndChar);
+                    distinctChars.put(windowEndChar, val + 1);
+                } else {
+                    distinctChars.put(windowEndChar, 1);
+                }
+            } else {
+                char windowStartChar = input.charAt(windowStart);
+                Integer val = distinctChars.get(windowStartChar);
+                if (val > 1) {
+                    distinctChars.put(windowStartChar, val - 1);
+                } else {
+                    distinctChars.remove(windowStartChar);
+                }
+                windowStart++;
+            }
+        }
+
+
+        return !matchFound ? 0 : longestSubStringSize;
+    }
 }

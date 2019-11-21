@@ -88,4 +88,16 @@ class SlidingWindowTest {
         int result = SlidingWindow.maxFruitCountOf2Types(new char[]{ 'A', 'B', 'C', 'B', 'B', 'C' });
         assertEquals(result, 5);
     }
+
+    @Test
+    void noRepeatSubstring_t0() {
+        int result = SlidingWindow.noRepeatSubstring("abbbb");
+        assertEquals(2, result);
+    }
+
+    @Test
+    void noRepeatSubstring_t1() {
+        int result = SlidingWindow.noRepeatSubstring("abccde");
+        assertEquals(3, result);
+    }
 }
