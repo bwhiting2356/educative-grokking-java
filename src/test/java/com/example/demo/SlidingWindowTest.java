@@ -43,4 +43,37 @@ class SlidingWindowTest {
         assertEquals(9, result);
     }
 
+    @Test
+    void smallestSubArray_t0() {
+        int[] numbers = new int[] { 2, 1, 5, 2, 3, 2 };
+        int result = SlidingWindow.smallestSubArray(7, numbers);
+        assertEquals(2, result);
+    }
+    @Test
+    void smallestSubArray_t1() {
+        int[] numbers = new int[] { 2, 1, 5, 2, 8 };
+        int result = SlidingWindow.smallestSubArray(7, numbers);
+        assertEquals(1, result);
+    }
+
+    @Test
+    void longestSubstringKDistinct_t0() {
+        int result = SlidingWindow.longestSubstringKDistinct(2, "araaci");
+        assertEquals(4, result);
+
+    }
+
+    @Test
+    void longestSubstringKDistinct_t1() {
+        int result = SlidingWindow.longestSubstringKDistinct(1, "araaci");
+        assertEquals(2, result);
+
+    }
+
+    @Test
+    void longestSubstringKDistinct_t2() {
+        int result = SlidingWindow.longestSubstringKDistinct(3, "araaci");
+        assertEquals(5, result);
+    }
+
 }
